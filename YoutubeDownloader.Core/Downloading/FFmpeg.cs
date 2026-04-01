@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Gress;
 using YoutubeDownloader.Core.Utils;
+using YoutubeDownloader.Core.Utils.Extensions;
 
 namespace YoutubeDownloader.Core.Downloading;
 
@@ -120,36 +120,12 @@ public static class FFmpeg
 
         try
         {
-            using var response = await Http.Client.GetAsync(
+            await Http.Client.DownloadAsync(
                 GetDownloadUrl(),
-                HttpCompletionOption.ResponseHeadersRead,
+                archiveFilePath,
+                progress,
                 cancellationToken
             );
-            response.EnsureSuccessStatusCode();
-
-            var totalSize = response.Content.Headers.ContentLength;
-            var downloadedSize = 0L;
-            var buffer = new byte[81920];
-
-            await using var responseStream = await response.Content.ReadAsStreamAsync(
-                cancellationToken
-            );
-            await using (var archiveFile = File.Create(archiveFilePath))
-            {
-                int bytesRead;
-                while ((bytesRead = await responseStream.ReadAsync(buffer, cancellationToken)) > 0)
-                {
-                    await archiveFile.WriteAsync(buffer.AsMemory(0, bytesRead), cancellationToken);
-                    downloadedSize += bytesRead;
-
-                    if (totalSize > 0)
-                    {
-                        progress?.Report(
-                            Percentage.FromFraction((double)downloadedSize / totalSize.Value)
-                        );
-                    }
-                }
-            }
 
             using var zip = ZipFile.OpenRead(archiveFilePath);
             var entry =

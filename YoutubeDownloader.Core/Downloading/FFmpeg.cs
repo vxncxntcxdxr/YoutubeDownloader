@@ -14,7 +14,7 @@ namespace YoutubeDownloader.Core.Downloading;
 
 public static class FFmpeg
 {
-    private const string Version = "8.1.0";
+    private const string Version = "8.1";
 
     public static string CliFileName { get; } =
         OperatingSystem.IsWindows() ? "ffmpeg.exe" : "ffmpeg";

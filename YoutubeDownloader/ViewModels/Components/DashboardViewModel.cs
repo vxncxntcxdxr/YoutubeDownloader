@@ -137,8 +137,7 @@ public partial class DashboardViewModel : ViewModelBase
         }
     }
 
-    [RelayCommand]
-    private async Task InitializeAsync() => await EnsureFFmpegAsync();
+    public override async Task InitializeAsync() => await EnsureFFmpegAsync();
 
     private bool CanShowAuthSetup() => !IsBusy;
 

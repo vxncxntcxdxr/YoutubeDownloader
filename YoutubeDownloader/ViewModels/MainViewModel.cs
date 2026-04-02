@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Avalonia;
-using CommunityToolkit.Mvvm.Input;
 using YoutubeDownloader.Framework;
 using YoutubeDownloader.Localization;
 using YoutubeDownloader.Services;
@@ -100,8 +99,7 @@ public partial class MainViewModel(
         }
     }
 
-    [RelayCommand]
-    private async Task InitializeAsync()
+    public override async Task InitializeAsync()
     {
         await ShowUkraineSupportMessageAsync();
         await ShowDevelopmentBuildMessageAsync();

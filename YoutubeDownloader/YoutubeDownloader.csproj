@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <ApplicationIcon>..\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>../favicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- Trimmed builds break support for Windows 10 for some reason -->
     <!-- https://github.com/Tyrrrz/YoutubeDownloader/issues/496 -->
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="..\favicon.ico" Link="favicon.ico" />
+    <AvaloniaResource Include="../favicon.ico" Link="favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YoutubeDownloader.Core\YoutubeDownloader.Core.csproj" />
+    <ProjectReference Include="../YoutubeDownloader.Core/YoutubeDownloader.Core.csproj" />
   </ItemGroup>
 
   <!-- Avalonia.WebView is completely incompatible with trimming -->

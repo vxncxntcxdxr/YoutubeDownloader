@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using YoutubeDownloader.ViewModels;
 using YoutubeDownloader.ViewModels.Components;

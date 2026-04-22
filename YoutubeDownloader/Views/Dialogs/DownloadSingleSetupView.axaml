@@ -15,7 +15,8 @@
         <StackPanel
             Grid.Row="0"
             Margin="16"
-            Orientation="Vertical">
+            Orientation="Vertical"
+            Spacing="8">
             <!--  Title  -->
             <TextBlock
                 FontSize="19"
@@ -29,30 +30,28 @@
                 </TextBlock.ContextMenu>
             </TextBlock>
 
-            <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Spacing="16">
                 <!--  Author  -->
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Spacing="3">
                     <materialIcons:MaterialIcon
                         Width="16"
                         Height="16"
                         BorderThickness="1"
                         Kind="UserOutline" />
                     <TextBlock
-                        Margin="3,0,0,0"
                         FontWeight="Light"
                         Text="{Binding Video.Author.Title}"
                         TextTrimming="CharacterEllipsis" />
                 </StackPanel>
 
                 <!--  Duration  -->
-                <StackPanel Margin="16,0,0,0" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Spacing="3">
                     <materialIcons:MaterialIcon
                         Width="16"
                         Height="16"
                         BorderThickness="1"
                         Kind="ClockOutline" />
                     <TextBlock
-                        Margin="3,0,0,0"
                         FontWeight="Light"
                         Text="{Binding Video.Duration, TargetNullValue=Live}"
                         TextTrimming="CharacterEllipsis" />
@@ -116,14 +115,13 @@
         </ComboBox>
 
         <!--  Buttons  -->
-        <StackPanel
+        <UniformGrid
             Grid.Row="3"
-            Margin="16,8,16,16"
-            HorizontalAlignment="Right"
-            Orientation="Horizontal">
+            Margin="8"
+            Columns="2">
             <!--  Download  -->
             <Button
-                Margin="0,0,8,0"
+                Margin="8"
                 Command="{Binding ConfirmCommand}"
                 Content="{Binding LocalizationManager.DownloadButton}"
                 IsDefault="True"
@@ -131,11 +129,11 @@
 
             <!--  Cancel  -->
             <Button
-                Margin="8,0,0,0"
+                Margin="8"
                 Command="{Binding CloseCommand}"
                 Content="{Binding LocalizationManager.CancelButton}"
                 IsCancel="True"
                 Theme="{DynamicResource MaterialOutlineButton}" />
-        </StackPanel>
+        </UniformGrid>
     </Grid>
 </UserControl>

@@ -61,10 +61,7 @@
                     </DockPanel>
 
                     <!--  Persist authentication  -->
-                    <DockPanel
-                        IsVisible="{OnPlatform False,
-                                               Windows=True}"
-                        LastChildFill="False">
+                    <DockPanel IsVisible="{OnPlatform False, Windows=True}" LastChildFill="False">
                         <ToolTip.Tip>
                             <TextBlock Inlines="{Binding LocalizationManager.PersistAuthTooltip, Converter={x:Static converters:MarkdownToInlinesConverter.Instance}}" />
                         </ToolTip.Tip>
@@ -177,8 +174,11 @@
                         LastChildFill="False"
                         ToolTip.Tip="{Binding LocalizationManager.ParallelLimitTooltip}">
                         <TextBlock DockPanel.Dock="Left" Text="{Binding LocalizationManager.ParallelLimitLabel}" />
-                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                            <TextBlock Margin="10,0" Text="{Binding ParallelLimit}" />
+                        <StackPanel
+                            DockPanel.Dock="Right"
+                            Orientation="Horizontal"
+                            Spacing="10">
+                            <TextBlock Text="{Binding ParallelLimit}" />
                             <Slider
                                 Width="150"
                                 IsSnapToTickEnabled="True"
